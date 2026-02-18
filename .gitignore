@@ -1,0 +1,5 @@
+model_train/my_model_archive/
+*.safetensors
+build/
+.dart_tool/
+.idea/
