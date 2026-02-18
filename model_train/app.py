@@ -8,11 +8,11 @@ import sqlite3
 app = Flask(__name__)
 CORS(app)
 
-# --- Setting up the updated database ---
+#Setting up the updated database
 def init_db():
     conn = sqlite3.connect('users_data.db')
     cursor = conn.cursor()
-     # Users table
+     #Users table
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,7 +21,7 @@ def init_db():
             password TEXT NOT NULL
         )
     ''')
-    # New log table for saving analytics for each user
+    #New log table for saving analytics for each user
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS history (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,7 +37,6 @@ def init_db():
 
 init_db()
 
-# --- Model Settings ---
 model_path = "my_model_archive" 
 model_name = "aubmindlab/bert-base-arabertv02"
 
@@ -51,7 +50,7 @@ except Exception as e:
 
 label_map = {0: "إيجابي ✅", 1: "سلبي ❌", 2: "محايد ⚠️"}
 
-# --- User Paths ---
+#User Paths
 @app.route('/signup', methods=['POST'])
 def signup():
     data = request.json
@@ -80,7 +79,7 @@ def login():
         return jsonify({'name': user[0], 'email': user[1]}), 200
     return jsonify({'error': 'Invalid credentials'}), 401
 
-# --- History Paths ---
+#History Paths
 @app.route('/save_analysis', methods=['POST'])
 def save_analysis():
     data = request.json
@@ -102,7 +101,7 @@ def get_history(email):
     conn = sqlite3.connect('users_data.db')
     cursor = conn.cursor()
 
-    # Retrieve records sorted from newest to oldest
+    #Retrieve records sorted from newest to oldest
     cursor.execute('SELECT comment, result FROM history WHERE user_email=? ORDER BY timestamp DESC', (email,))
     rows = cursor.fetchall()
     conn.close()
@@ -110,7 +109,7 @@ def get_history(email):
     history_list = [{"comment": r[0], "result": r[1]} for r in rows]
     return jsonify(history_list)
 
-# --- Prediction Path ---
+#Prediction Path
 @app.route('/predict', methods=['POST'])
 def predict():
     data = request.json

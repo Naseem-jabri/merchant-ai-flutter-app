@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'welcome_page.dart';
-import '../../global_data.dart'; // هذا السطر هو المفتاح لحل المشكلة
+import '../../global_data.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -34,14 +34,15 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 15),
-              // هنا استبدلنا النص الثابت بالمتغير العالمي
+
               Text(
                 currentUserName, 
                 style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 40),
-              // عرض الاسم والإيميل فقط
-             // في صفحة البروفايل استبدلي النصوص القديمة بهذا:
+              
+               // Display name and email only
+
 _buildInfoCard(Icons.person_outline, "Full Name", currentUserName),
 _buildInfoCard(Icons.email_outlined, "Email Address", currentUserEmail),
               const SizedBox(height: 60),

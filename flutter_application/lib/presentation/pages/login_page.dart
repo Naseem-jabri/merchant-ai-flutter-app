@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home_page.dart';
 import '../../services/api_service.dart';
-import '../../global_data.dart'; // ضروري جداً لتحديث الأسماء
+import '../../global_data.dart'; 
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,7 +15,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passwordController = TextEditingController();
   bool _isLoading = false;
 
-  // دالة تسجيل الدخول والربط مع السيرفر
+  //login and server connection function
   Future<void> _handleLogin() async {
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Please fill all fields")));
@@ -28,13 +28,13 @@ class _LoginPageState extends State<LoginPage> {
       final response = await ApiService().login(_emailController.text, _passwordController.text);
       
       if (response.containsKey('name')) {
-        // --- الربط النهائي الذي سألتِ عنه هنا ---
+        //final binding
         setState(() {
-          currentUserName = response['name'];   // حفظ الاسم القادم من الداتاسيت
-          currentUserEmail = response['email']; // حفظ الإيميل القادم من الداتاسيت
+          currentUserName = response['name'];   
+          currentUserEmail = response['email']; 
         });
 
-        // الانتقال لصفحة الهوم
+        //go to the home page
         Navigator.pushReplacement(
           context, 
           MaterialPageRoute(builder: (context) => const HomePage())
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // تحسين شكل خانات الإدخال
+  //Input fields
   Widget _buildTextField(TextEditingController controller, String hint, IconData icon, bool isPass) {
     return TextField(
       controller: controller,
@@ -108,7 +108,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  // نافذة تسجيل حساب جديد (Sign Up)
+  //sing Up
   void _showSignUpDialog(BuildContext context) {
     final nameCtrl = TextEditingController();
     final emailCtrl = TextEditingController();

@@ -3,11 +3,11 @@ import 'package:dio/dio.dart';
 class ApiService {
   final Dio _dio = Dio();
   
-  // Base URL for the Flask Server
-  // If using Android Emulator, change 127.0.0.1 to 10.0.2.2
+  //Base URL for the Flask Server
+  //If using Android Emulator, change 127.0.0.1 to 10.0.2.2
   final String baseUrl = 'http://127.0.0.1:5000';
 
-  // 1. Analyze text using AI Model
+  //Analyze text using AI Model
   Future<Map<String, dynamic>> analyzeComment(String comment) async {
     try {
       final response = await _dio.post(
@@ -21,7 +21,7 @@ class ApiService {
     }
   }
 
-  // 2. User Login
+  //User Login
   Future<Map<String, dynamic>> login(String email, String password) async {
     try {
       final response = await _dio.post(
@@ -39,7 +39,7 @@ class ApiService {
     }
   }
 
-  // 3. New Account Registration (Sign Up)
+  //New Account Registration (Sign Up)
   Future<Map<String, dynamic>> signUp(String name, String email, String password) async {
     try {
       final response = await _dio.post(
@@ -58,9 +58,8 @@ class ApiService {
     }
   }
 
-  // --- History/Database Operations ---
 
-  // 4. Save a new analysis record to the database
+  //Save a new analysis record to the database
   Future<void> saveAnalysis(String email, String comment, String result) async {
     try {
       await _dio.post(
@@ -77,7 +76,7 @@ class ApiService {
     }
   }
 
-  // 5. Fetch previous analysis records for a specific user
+  //Fetch previous analysis records for a specific user
   Future<List<dynamic>> fetchHistory(String email) async {
     try {
       final response = await _dio.get('$baseUrl/get_history/$email');

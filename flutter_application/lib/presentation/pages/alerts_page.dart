@@ -6,7 +6,6 @@ class AlertsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // حساب الإحصائيات من السجل الحقيقي
     int total = analysisHistory.length;
     int positiveCount = analysisHistory.where((item) => item['label']!.contains("Positive")).length;
     int negativeCount = analysisHistory.where((item) => item['label']!.contains("Negative")).length;
@@ -30,7 +29,6 @@ class AlertsPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
             const SizedBox(height: 25),
 
-            // التنبيهات الذكية بناءً على الأرقام الحقيقية
             _buildAlertBox(
               negativeCount >= 1 ? "Attention: $negativeCount Negative feedback detected" : "No major complaints currently", 
               negativeCount >= 1 ? Colors.red : Colors.orange,

@@ -18,7 +18,7 @@ class WelcomePage extends StatelessWidget {
             ElevatedButton(
               onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => const LoginPage())),
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFFD9E8F5), // لون الزر الفاتح من تصميمك
+                backgroundColor: const Color(0xFFD9E8F5), 
                 padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),

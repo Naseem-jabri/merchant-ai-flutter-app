@@ -14,7 +14,7 @@ class MerchantAI extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'MerchantAI',
       theme: ThemeData(
-        // استخدام اللون البنفسجي المائل للأزرق من تصميمك
+
         primaryColor: const Color(0xFF5D6DA0),
         scaffoldBackgroundColor: const Color(0xFF5D6DA0),
         appBarTheme: const AppBarTheme(backgroundColor: Colors.transparent, elevation: 0),

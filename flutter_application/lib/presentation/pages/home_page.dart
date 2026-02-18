@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'alerts_page.dart';
-import 'profile_page.dart'; // تأكدي من إنشاء هذا الملف
+import 'profile_page.dart'; 
 import '../../services/api_service.dart'; 
 import '../../global_data.dart'; 
 
@@ -25,16 +25,17 @@ class _HomePageState extends State<HomePage> {
     });
 
     try {
-      // استدعاء السيرفر (بايثون)
+
+      // Connect to the server
       final result = await ApiService().analyzeComment(_commentController.text);
       
-      // استخراج النتيجة (إيجابي أو سلبي)
+      //Result 
       String label = result['label'] ?? "Unknown";
 
       setState(() {
         _analysisResult = "Result: $label";
         
-        // إضافة للسجل ليظهر في صفحة التنبيهات مع النسبة
+       // Added to the log to appear on the alerts page with the percentage
         analysisHistory.insert(0, {
           'text': _commentController.text,
           'label': label,
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          // أيقونة التنبيهات
+          // Notifications icon
           IconButton(
             icon: const Icon(Icons.notifications_none, color: Colors.white, size: 28),
             onPressed: () => Navigator.push(
@@ -68,17 +69,17 @@ class _HomePageState extends State<HomePage> {
               MaterialPageRoute(builder: (context) => const AlertsPage()),
             ),
           ),
-          // أيقونة الشخص (البروفايل)
+          // Person's icon (profile)
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: GestureDetector(
               onTap: () {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (context) => ProfilePage()), // تم حذف const من هنا
+    MaterialPageRoute(builder: (context) => ProfilePage()), 
   );
 },
-child: CircleAvatar( // تأكدي من عدم وجود const هنا أيضاً
+child: CircleAvatar( 
   backgroundColor: Colors.white,
   child: Icon(Icons.person, color: Color(0xFF5D6DA0)),
 ),
