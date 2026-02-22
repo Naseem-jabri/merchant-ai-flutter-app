@@ -1,6 +1,6 @@
 # MerchantAI - Customer Feedback Analysis System
 
-### 💡 Project Concept
+###  Project Concept
 MerchantAI is a comprehensive application designed to help merchants and business owners automatically understand customer sentiments. The system analyzes Arabic comments using Natural Language Processing (NLP) to classify them as Positive, Negative, or Neutral.
 
 ### Why this project?
